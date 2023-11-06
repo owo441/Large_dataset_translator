@@ -18,6 +18,7 @@ class bluemoon(DataParser):
                          target_lang=target_lang,
                          max_example_per_thread=max_example_per_thread,
                          large_chunks_threshold=large_chunks_threshold)
+        self.output_path = output_path
         self.max_ctxs = 5
         self.target_config = BaseConfig
         self.target_fields = ['question_text', 'orig_answer_texts']
