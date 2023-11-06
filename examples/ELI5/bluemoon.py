@@ -25,7 +25,7 @@ class bluemoon(DataParser):
     def read(self) -> None:
         with open(self.file_path, encoding='utf-8') as jfile:
             json_data = json.load(jfile)
-        self.data_read = json_data[0]
+        self.data_read = json_data
         return None
 
     def convert(self) -> None:
