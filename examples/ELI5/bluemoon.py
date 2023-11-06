@@ -29,7 +29,6 @@ class bluemoon(DataParser):
 
     # Read function must assign data that has been read to self.data_read
 def read(self) -> None:
-    super(bluemoon, self).read()
     with open(self.file_path, encoding='utf-8') as jfile:
         json_data = json.load(jfile)
 
@@ -37,7 +36,6 @@ def read(self) -> None:
     return None
 
     def convert(self) -> None:
-        super(bluemoon, self).convert()
 
         lfqa_prefixs = [
             "\n\n Here are some relevant documents, which may or may not be applicable to the previous question. If you use this information, please indicate 'Based on the provided documents':\n",
