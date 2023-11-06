@@ -1,3 +1,4 @@
+import os
 import json
 import sys
 from tqdm.auto import tqdm
@@ -18,7 +19,7 @@ class bluemoon(DataParser):
                          target_lang=target_lang,
                          max_example_per_thread=max_example_per_thread,
                          large_chunks_threshold=large_chunks_threshold)
-        self.output_path = os.path.join(output_dir, output_file)  # Add this line
+        self.output_path = os.path.join(output_dir, output_file)
         self.max_ctxs = 5
         self.target_config = BaseConfig
         self.target_fields = ['question_text', 'orig_answer_texts']
