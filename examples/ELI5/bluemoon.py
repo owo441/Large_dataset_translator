@@ -25,12 +25,12 @@ class bluemoon(DataParser):
         self.target_config = BaseConfig
         self.target_fields = ['question_text', 'orig_answer_texts']
 
-        def read(self) -> None:
+    def read(self) -> None:
         with open(self.file_path, encoding='utf-8') as jfile:
             json_data = json.load(jfile)
         self.data_read = json_data
         return None
-
+        
     def convert(self) -> None:
         lfqa_prefixs = [
             "\n\n Here are some relevant documents, which may or may not be applicable to the previous question. If you use this information, please indicate 'Based on the provided documents':\n",
