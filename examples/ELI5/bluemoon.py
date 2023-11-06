@@ -37,12 +37,21 @@ class bluemoon(DataParser):
             data_dict['orig_answer_texts'] = ""
             for conv in data['conversations']:
                 if conv['from'] == 'human':
-                    data_dict['question_text'] += conv['value'] + "\n\n"
+                    data_dict['question_text'] += conv['value'] + "
+
+"
                 else:  # This will include all non-human speakers as 'orig_answer_texts'
-                    data_dict['orig_answer_texts'] += conv['value'] + "\n\n"
+                    data_dict['orig_answer_texts'] += conv['value'] + "
+
+"
             data_dict['answer_lengths'] = None
             data_converted.append(data_dict)
         self.converted_data = data_converted
+        return None
+
+    def save(self) -> None:
+        with open(self.output_path, 'w', encoding='utf-8') as f:
+            json.dump(self.converted_data, f, ensure_ascii=False, indent=4)
         return None
 
 if __name__ == '__main__':
