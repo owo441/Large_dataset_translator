@@ -100,7 +100,6 @@ class bluemoon(DataParser):
             for doc in docs:
                 data_dict['question_text'] += doc + "\n"
 
-"
             data_dict['orig_answer_texts'] = data['answers'][0] if data['answers'] else None
             data_dict['answer_lengths'] = None
             data_converted.append(data_dict)
