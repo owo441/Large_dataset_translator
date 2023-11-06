@@ -61,4 +61,5 @@ if __name__ == '__main__':
                                target_lang="ko")
     bluemoon_parser.read()
     bluemoon_parser.convert()
+    bluemoon_parser.translate_converted()
     bluemoon_parser.save()
