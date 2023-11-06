@@ -8,11 +8,11 @@ from configs import BaseConfig
 from translator import DataParser
 
 
-PARSER_NAME = "ELI5_val"
+PARSER_NAME = "bluemoon"
 
 
-class ELI5Val(DataParser):
-    def __init__(self, file_path: str, output_path: str, target_lang: str="vi",
+class bluemoon(DataParser):
+    def __init__(self, file_path: str, output_path: str, target_lang: str="ko",
                  max_example_per_thread=400, large_chunks_threshold=20000):
         super().__init__(file_path, output_path,
                          parser_name=PARSER_NAME,
@@ -29,7 +29,7 @@ class ELI5Val(DataParser):
 
     # Read function must assign data that has been read to self.data_read
     def read(self) -> None:
-        super(ELI5Val, self).read()
+        super(bluemoon, self).read()
         with open(self.file_path, encoding='utf-8') as jfile:
             json_data = [json.loads(example) for example in jfile]
 
@@ -37,7 +37,7 @@ class ELI5Val(DataParser):
         return None
 
     def convert(self) -> None:
-        super(ELI5Val, self).convert()
+        super(bluemoon, self).convert()
 
         lfqa_prefixs = [
             "\n\n Here are some relevant documents, which may or may not be applicable to the previous question. If you use this information, please indicate 'Based on the provided documents':\n",
@@ -119,7 +119,7 @@ class ELI5Val(DataParser):
 
 
 if __name__ == '__main__':
-    eli5_val_parser = ELI5Val(r"examples/ELI5/ELI5_val_10_doc.json",
+    bluemoon_parser = bluemoon(r"examples/ELI5/bluemoon.train.json",
                               r"examples/ELI5",
                               max_example_per_thread=100,
                               large_chunks_threshold=1000,
