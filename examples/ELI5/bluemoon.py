@@ -56,8 +56,8 @@ if __name__ == '__main__':
     bluemoon_parser = bluemoon(file_path=r"examples/ELI5/bluemoon.train.json",
                                output_dir=r"examples/ELI5",
                                output_file="bluemoon_converted.json",
-                               max_example_per_thread=100,
-                               large_chunks_threshold=1000,
+                               max_example_per_thread=50,
+                               large_chunks_threshold=500,
                                target_lang="ko")
     bluemoon_parser.read()
     bluemoon_parser.convert()
