@@ -48,7 +48,7 @@ class bluemoon(DataParser):
             docs = [ctx[0] for ctx in data['ctxs'][:self.max_ctxs]]
             data_dict['question_text'] = data['question']
             for doc in docs:
-                data_dict['question_text'] += doc + "/n/n"
+                data_dict['question_text'] += doc + "\n\n"
 
             data_dict['orig_answer_texts'] = data['answers'][0] if data['answers'] else None
             data_dict['answer_lengths'] = None
