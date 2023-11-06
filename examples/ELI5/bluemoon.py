@@ -98,7 +98,7 @@ class bluemoon(DataParser):
             lfqa_prefix = random.choice(lfqa_prefixs)
             data_dict['question_text'] = data['question'] + lfqa_prefix
             for doc in docs:
-                data_dict['question_text'] += doc + "
+                data_dict['question_text'] += doc + "\n"
 
 "
             data_dict['orig_answer_texts'] = data['answers'][0] if data['answers'] else None
