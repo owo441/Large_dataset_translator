@@ -27,14 +27,13 @@ class bluemoon(DataParser):
         # The data fields to be translated (The fields belong to BaseConfig)
         self.target_fields = ['question_text', 'orig_answer_texts']
 
-    # Read function must assign data that has been read to self.data_read
-    def read(self) -> None:
-        super().read()
-        with open(self.file_path, encoding='utf-8') as jfile:
-            json_data = [json.loads(example) for example in jfile]
+# Read function must assign data that has been read to self.data_read
+def read(self) -> None:
+    with open(self.file_path, encoding='utf-8') as jfile:
+        json_data = [json.loads(example) for example in jfile]
 
-        self.data_read = json_data[0]
-        return None
+    self.data_read = json_data[0]
+    return None
 
     def convert(self) -> None:
         super().convert()
