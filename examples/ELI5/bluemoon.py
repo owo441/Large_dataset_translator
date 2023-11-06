@@ -29,7 +29,6 @@ class bluemoon(DataParser):
         return None
 
     def convert(self) -> None:
-        super().convert()
         data_converted = []
         for data in tqdm(self.data_read, desc="Converting data"):
             data_dict = {}
