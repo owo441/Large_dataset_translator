@@ -242,20 +242,18 @@ class DataParser(metaclass=ForceBaseCallMeta):
                 print(f"\n Connection timeout from thread {desc}\n")
                 raise f" Connection timeout raise from thread {desc}"
 
-    @abstractmethod
-    @force_super_call
-    @timeit
-    def convert(self) -> Union[List[Dict], None]:
-        assert self.data_read is not None, "Please implement the read function for DataParser" \
-                                           " and assign data to self.data_read"
-        pass
+@abstractmethod
+@timeit
+def convert(self) -> Union[List[Dict], None]:
+    assert self.data_read is not None, "Please implement the read function for DataParser" \
+                                       " and assign data to self.data_read"
+    pass
 
-    @abstractmethod
-    @force_super_call
-    @timeit
-    def read(self) -> Union[List, Dict, None]:
-        assert os.path.isfile(self.file_path), f"Invalid path file for {self.file_path}"
-        pass
+@abstractmethod
+@timeit
+def read(self) -> Union[List, Dict, None]:
+    assert os.path.isfile(self.file_path), f"Invalid path file for {self.file_path}"
+    pass
 
     @property
     @force_super_call
