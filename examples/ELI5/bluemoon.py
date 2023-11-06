@@ -124,6 +124,6 @@ if __name__ == '__main__':
                               max_example_per_thread=100,
                               large_chunks_threshold=1000,
                               target_lang="ko")
-    eli5_val_parser.read()
-    eli5_val_parser.convert()
-    eli5_val_parser.save
+    bluemoon_parser.read()
+    bluemoon_parser.convert()
+    bluemoon_parser.save
