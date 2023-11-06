@@ -10,15 +10,15 @@ from translator import DataParser
 PARSER_NAME = "bluemoon"
 
 class bluemoon(DataParser):
-    def __init__(self, file_path: str, output_path: str, target_lang: str="ko",
+    def __init__(self, file_path: str, output_dir: str, output_file: str, target_lang: str="ko",
                  max_example_per_thread=400, large_chunks_threshold=20000):
-        super().__init__(file_path, output_path,
+        super().__init__(file_path, output_dir,
                          parser_name=PARSER_NAME,
                          do_translate=True,
                          target_lang=target_lang,
                          max_example_per_thread=max_example_per_thread,
                          large_chunks_threshold=large_chunks_threshold)
-        self.output_path = output_path
+        self.output_path = os.path.join(output_dir, output_file)  # Add this line
         self.max_ctxs = 5
         self.target_config = BaseConfig
         self.target_fields = ['question_text', 'orig_answer_texts']
@@ -52,11 +52,12 @@ class bluemoon(DataParser):
         return None
 
 if __name__ == '__main__':
-    bluemoon_parser = bluemoon(r"examples/ELI5/bluemoon.train.json",
-                              r"examples/ELI5/bluemoon_converted.json",
-                              max_example_per_thread=100,
-                              large_chunks_threshold=1000,
-                              target_lang="ko")
+    bluemoon_parser = bluemoon(file_path=r"examples/ELI5/bluemoon.train.json",
+                               output_dir=r"examples/ELI5",
+                               output_file="bluemoon_converted.json",
+                               max_example_per_thread=100,
+                               large_chunks_threshold=1000,
+                               target_lang="ko")
     bluemoon_parser.read()
     bluemoon_parser.convert()
     bluemoon_parser.save()
