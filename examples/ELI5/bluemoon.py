@@ -60,7 +60,7 @@ class bluemoon(DataParser):
 
 
 if __name__ == '__main__':
-    bluemoon_parser = bluemoon(r"examples/bluemoon/bluemoon.train.json",
+    bluemoon_parser = bluemoon(r"examples/ELI5/bluemoon.train.json",
                               r"examples/bluemoon",
                               max_example_per_thread=100,
                               large_chunks_threshold=1000,
