@@ -31,15 +31,15 @@ class bluemoon(DataParser):
         return None
         
     def convert(self) -> None:
-        data_converted = []
-        for data in tqdm(self.data_read, desc="Converting data"):
-            data_dict = {}
-            data_dict['source_text'] = data['source_text']
-            data_dict['target_text'] = data['target_text']
-            data_converted.append(data_dict)
+    data_converted = []
+    for data in tqdm(self.data_read, desc="Converting data"):
+        data_dict = {}
+        data_dict['source_text'] = data['question']
+        data_dict['target_text'] = data['answers'][0] if data['answers'] else None
+        data_converted.append(data_dict)
 
-        self.converted_data = data_converted
-        return None
+    self.converted_data = data_converted
+    return None
 
 
 if __name__ == '__main__':
