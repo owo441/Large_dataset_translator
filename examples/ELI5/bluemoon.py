@@ -30,7 +30,7 @@ class bluemoon(DataParser):
         self.data_read = json_data
         return None
         
-    def convert(self) -> None:
+def convert(self) -> None:
     data_converted = []
     for data in tqdm(self.data_read, desc="Converting data"):
         data_dict = {}
