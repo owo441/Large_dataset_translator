@@ -1,8 +1,8 @@
 import json
-import random
 import sys
-sys.path.insert(0,r'./')
 from tqdm.auto import tqdm
+
+sys.path.insert(0,r'./')
 
 from configs import BaseConfig
 from translator import DataParser
@@ -32,12 +32,14 @@ class bluemoon(DataParser):
         data_converted = []
         for data in tqdm(self.data_read, desc="Converting data"):
             data_dict = {}
-            data_dict['qas_id'] = data['question_id']
-            docs = [ctx[0] for ctx in data['ctxs'][:self.max_ctxs]]
-            data_dict['question_text'] = data['question']
-            for doc in docs:
-                data_dict['question_text'] += doc + "\n\n"
-            data_dict['orig_answer_texts'] = data['answers'][0] if data['answers'] else None
+            data_dict['qas_id'] = data['id']
+            data_dict['question_text'] = ""
+            data_dict['orig_answer_texts'] = ""
+            for conv in data['conversations']:
+                if conv['from'] == 'human':
+                    data_dict['question_text'] += conv['value'] + "\n\n"
+                else:  # This will include all non-human speakers as 'orig_answer_texts'
+                    data_dict['orig_answer_texts'] += conv['value'] + "\n\n"
             data_dict['answer_lengths'] = None
             data_converted.append(data_dict)
         self.converted_data = data_converted
