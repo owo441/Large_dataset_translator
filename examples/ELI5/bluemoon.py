@@ -28,12 +28,12 @@ class bluemoon(DataParser):
         self.target_fields = ['question_text', 'orig_answer_texts']
 
     # Read function must assign data that has been read to self.data_read
-    def read(self) -> None:
-        with open(self.file_path, encoding='utf-8') as jfile:
-            json_data = [json.loads(example) for example in jfile]
+def read(self) -> None:
+    with open(self.file_path, encoding='utf-8') as jfile:
+        json_data = json.load(jfile)  # Changed from 'json.loads' to 'json.load'
 
-        self.data_read = json_data[0]
-        return None
+    self.data_read = json_data[0]  # This line may also need to be modified depending on the structure of your JSON file.
+    return None
 
     def convert(self) -> None:
         super().convert()
